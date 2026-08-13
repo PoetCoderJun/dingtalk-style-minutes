@@ -11,10 +11,13 @@ This is an independent skill inspired by the information architecture of DingTal
 
 ## Requirements
 
-- Python 3.9-3.13 and network access.
-- `clean-talking-video` installed as a sibling skill, or `CLEAN_TALKING_VIDEO_SKILL` set to its directory. Required only when starting from audio/video; existing `transcript.json` input can skip ASR.
-- `DASHSCOPE_API_KEY` (or `DASHSCOPE_ASR_API_KEY`) for Qwen file transcription. Load it from an existing workspace `.ENV` when present; otherwise require it from the process environment. Never print it.
-- Node.js 20+, npm/npx, `lark-cli`, an authenticated Feishu user, and permission to edit the destination document/whiteboard.
+- Python 3.9-3.13 and network access for cloud/Feishu operations.
+- Install [`@larksuite/cli`](https://github.com/larksuite/cli), authenticate a Feishu user, and ensure the destination document/whiteboard is editable.
+- Choose one transcription path for audio/video:
+  - **DashScope:** install `clean-talking-video` as a sibling skill (or set `CLEAN_TALKING_VIDEO_SKILL`) and set `DASHSCOPE_API_KEY` / `DASHSCOPE_ASR_API_KEY`. Load an existing workspace `.ENV` when present; never print the key.
+  - **Local FunASR:** install FunASR in an isolated environment, transcribe locally, and normalize its timestamped result to this skill's `transcript.json` contract (`id`, `start`, `end`, `text`, and `speaker_id` when diarization is available). Then continue from workflow step 3. Do not invent speaker identities when the local model cannot diarize reliably.
+- Existing `transcript.json` input skips ASR entirely.
+- Node.js 20+ and npm/npx for whiteboard validation/rendering.
 - Installed sub-skills listed below. Stop with an actionable missing-dependency or authorization message; do not silently skip ASR, the editable board, or live verification.
 
 ## Required sub-skills
@@ -36,8 +39,11 @@ Do not create a separate chapter-navigation section. Do not omit verbatim transc
 
 ## Workflow
 
-1. Create an isolated work directory. Before any ASR call, load the workspace `.ENV` yourself when it exists: `set -a; source .ENV; set +a`. Otherwise use an already-set environment variable; never ask the user to paste or print a secret. Create a Python 3.9-3.13 virtual environment and install the `clean-talking-video` requirements when the work directory has no compatible environment.
-2. For audio/video input, run `scripts/transcribe_media.py` with that virtual-environment Python. It delegates only to `clean-talking-video/scripts/transcribe.py`, uses `qwen-audio-3.0-asr-flash-filetrans`, enables speaker diarization by default, and produces `transcript.json` plus `draft.srt`. Supply `--speaker-count N` only when the likely count is known; use `--no-diarization` only for a clearly single-speaker recording. For an existing transcript, start at step 3.
+1. Create an isolated work directory. For DashScope, load the workspace `.ENV` yourself before ASR when it exists: `set -a; source .ENV; set +a`. Otherwise use an already-set environment variable; never ask the user to paste or print a secret. Install the selected transcription path in a compatible isolated environment when needed.
+2. For audio/video input, use one path:
+   - **DashScope:** run `scripts/transcribe_media.py`. It delegates to `clean-talking-video/scripts/transcribe.py`, uses `qwen-audio-3.0-asr-flash-filetrans`, enables speaker diarization by default, and produces `transcript.json` plus `draft.srt`. Supply `--speaker-count N` only when known; use `--no-diarization` only for a clearly single-speaker recording.
+   - **Local FunASR:** let Codex install and run FunASR locally, preserving segment timestamps and diarization when the selected model supports them. Convert the output to the `transcript.json` fields defined above and validate that segment order and duration are plausible before continuing.
+   For an existing transcript, start at step 3.
 3. Read the complete `transcript.json`. Preserve every `speaker_id`. Map anonymous speakers to real names only when self-introduction, participant metadata, or explicit handoff makes the identity reliable; otherwise retain `发言人 N`. Correct obvious ASR terms and remove failed takes only in a separate cleaned transcript; preserve timestamps and segment IDs. Never summarize from `draft.srt` alone.
 4. Determine the dominant content type using [references/content-routing.md](references/content-routing.md). Read [references/editorial-aesthetics.md](references/editorial-aesthetics.md), then build schema v3 from [references/adaptive-content-model.md](references/adaptive-content-model.md):
    - one overview paragraph;

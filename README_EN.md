@@ -6,7 +6,13 @@ Turn a phone recording, meeting, or interview into an **editable Feishu document
 
 **One recording → overview + graphic minutes + chaptered full transcript**
 
-![A real Feishu whiteboard created with DingTalk-style Minutes](examples/feishu-result.jpg)
+<table>
+  <tr>
+    <td width="33%"><a href="examples/sections/01-overview.jpg"><img src="examples/sections/01-overview.jpg" alt="Overview"></a><br><strong>1. Overview</strong></td>
+    <td width="33%"><a href="examples/sections/02-ai-minutes.jpg"><img src="examples/sections/02-ai-minutes.jpg" alt="AI minutes"></a><br><strong>2. AI minutes</strong></td>
+    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="Full transcript"></a><br><strong>3. Full transcript</strong></td>
+  </tr>
+</table>
 
 ## Just tell the AI
 
@@ -14,13 +20,13 @@ Turn a phone recording, meeting, or interview into an **editable Feishu document
 Use $dingtalk-style-minutes to turn this recording into a Feishu document.
 ```
 
-## Install
+## Ask Codex to install it
 
-```bash
-npx skills add PoetCoderJun/dingtalk-style-minutes
+```text
+Install github.com/PoetCoderJun/dingtalk-style-minutes,
+then install and authenticate github.com/larksuite/cli.
+For transcription, configure DASHSCOPE_API_KEY or install FunASR locally.
 ```
-
-Audio and video transcription requires `DASHSCOPE_API_KEY`. Feishu delivery requires an authenticated `lark-cli` session.
 
 ## License
 

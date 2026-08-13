@@ -6,7 +6,13 @@
 
 **一段录音 → 内容概览 + AI 图文纪要 + 分章节完整转写**
 
-![DingTalk-style Minutes 真实飞书画板效果](examples/feishu-result.jpg)
+<table>
+  <tr>
+    <td width="33%"><a href="examples/sections/01-overview.jpg"><img src="examples/sections/01-overview.jpg" alt="一、内容概览"></a><br><strong>一、内容概览</strong></td>
+    <td width="33%"><a href="examples/sections/02-ai-minutes.jpg"><img src="examples/sections/02-ai-minutes.jpg" alt="二、AI 纪要"></a><br><strong>二、AI 纪要</strong></td>
+    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="三、完整转写"></a><br><strong>三、完整转写</strong></td>
+  </tr>
+</table>
 
 ## 和 AI 说一句话就行
 
@@ -14,13 +20,13 @@
 用 $dingtalk-style-minutes 把这段录音整理成飞书图文纪要。
 ```
 
-## 安装
+## 让 Codex 安装
 
-```bash
-npx skills add PoetCoderJun/dingtalk-style-minutes
+```text
+请安装 github.com/PoetCoderJun/dingtalk-style-minutes，
+再安装并登录 github.com/larksuite/cli。
+转写二选一：配置 DASHSCOPE_API_KEY，或在本地安装 FunASR。
 ```
-
-音视频转写需要 `DASHSCOPE_API_KEY`，写入飞书需要登录 `lark-cli`。
 
 ## 许可
 

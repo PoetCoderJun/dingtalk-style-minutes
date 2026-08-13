@@ -24,6 +24,12 @@ class MetadataTest(unittest.TestCase):
         self.assertIn("Chinese", frontmatter["description"])
         self.assertNotIn("/Users/", text)
 
+    def test_skill_documents_cloud_or_local_asr_choice(self) -> None:
+        text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("DASHSCOPE_API_KEY", text)
+        self.assertIn("FunASR", text)
+        self.assertIn("transcript.json", text)
+
     def test_all_relative_markdown_links_exist(self) -> None:
         for document in (ROOT / "README.md", ROOT / "README_EN.md", SKILL / "SKILL.md"):
             text = document.read_text(encoding="utf-8")
