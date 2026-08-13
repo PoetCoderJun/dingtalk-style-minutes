@@ -24,6 +24,7 @@
 
 ```text
 请安装 github.com/PoetCoderJun/dingtalk-style-minutes，
+再安装 github.com/zarazhangrui/beautiful-feishu-whiteboard，
 再安装并登录 github.com/larksuite/cli。
 转写二选一：配置 DASHSCOPE_API_KEY，或在本地安装 FunASR。
 ```

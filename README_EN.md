@@ -24,6 +24,7 @@ Use $dingtalk-style-minutes to turn this recording into a Feishu document.
 
 ```text
 Install github.com/PoetCoderJun/dingtalk-style-minutes,
+then install github.com/zarazhangrui/beautiful-feishu-whiteboard,
 then install and authenticate github.com/larksuite/cli.
 For transcription, configure DASHSCOPE_API_KEY or install FunASR locally.
 ```

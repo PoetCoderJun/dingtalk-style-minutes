@@ -30,6 +30,15 @@ class MetadataTest(unittest.TestCase):
         self.assertIn("FunASR", text)
         self.assertIn("transcript.json", text)
 
+    def test_editorial_dependency_contract_is_documented(self) -> None:
+        skill_text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+        self.assertNotIn("substance-writing-review", skill_text)
+        self.assertIn("beautiful-feishu-whiteboard", skill_text)
+
+        for readme in (ROOT / "README.md", ROOT / "README_EN.md"):
+            text = readme.read_text(encoding="utf-8")
+            self.assertIn("github.com/zarazhangrui/beautiful-feishu-whiteboard", text)
+
     def test_all_relative_markdown_links_exist(self) -> None:
         for document in (ROOT / "README.md", ROOT / "README_EN.md", SKILL / "SKILL.md"):
             text = document.read_text(encoding="utf-8")

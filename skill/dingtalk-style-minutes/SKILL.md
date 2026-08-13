@@ -23,7 +23,6 @@ This is an independent skill inspired by the information architecture of DingTal
 ## Required sub-skills
 
 - **REQUIRED SUB-SKILL:** Use `clean-talking-video` section 2 only for ASR.
-- **REQUIRED SUB-SKILL:** Use `substance-writing-review` for the editorial spine and natural Chinese.
 - **REQUIRED SUB-SKILL:** Use `beautiful-feishu-whiteboard` for SVG safety and live-board verification.
 - Use `lark-doc` to create or surgically update the final document.
 
