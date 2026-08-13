@@ -25,7 +25,7 @@ class MetadataTest(unittest.TestCase):
         self.assertNotIn("/Users/", text)
 
     def test_all_relative_markdown_links_exist(self) -> None:
-        for document in (ROOT / "README.md", ROOT / "README.zh-CN.md", SKILL / "SKILL.md"):
+        for document in (ROOT / "README.md", ROOT / "README_EN.md", SKILL / "SKILL.md"):
             text = document.read_text(encoding="utf-8")
             for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
                 if "://" in target or target.startswith("#"):
