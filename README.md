@@ -8,9 +8,9 @@
 
 <table>
   <tr>
-    <td width="33%"><a href="examples/sections/01-overview.jpg"><img src="examples/sections/01-overview.jpg" alt="一、内容概览"></a><br><strong>一、内容概览</strong></td>
-    <td width="33%"><a href="examples/sections/02-ai-minutes.jpg"><img src="examples/sections/02-ai-minutes.jpg" alt="二、AI 纪要"></a><br><strong>二、AI 纪要</strong></td>
-    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="三、完整转写"></a><br><strong>三、完整转写</strong></td>
+    <td width="33%"><a href="examples/sections/01-ai-board.jpg"><img src="examples/sections/01-ai-board.jpg" alt="AI 纪要画板"></a><br><strong>AI 纪要 · 画板</strong></td>
+    <td width="33%"><a href="examples/sections/02-ai-notes.jpg"><img src="examples/sections/02-ai-notes.jpg" alt="AI 纪要文字"></a><br><strong>AI 纪要 · 文字</strong></td>
+    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="完整转写"></a><br><strong>完整转写</strong></td>
   </tr>
 </table>
 

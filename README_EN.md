@@ -8,9 +8,9 @@ Turn a phone recording, meeting, or interview into an **editable Feishu document
 
 <table>
   <tr>
-    <td width="33%"><a href="examples/sections/01-overview.jpg"><img src="examples/sections/01-overview.jpg" alt="Overview"></a><br><strong>1. Overview</strong></td>
-    <td width="33%"><a href="examples/sections/02-ai-minutes.jpg"><img src="examples/sections/02-ai-minutes.jpg" alt="AI minutes"></a><br><strong>2. AI minutes</strong></td>
-    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="Full transcript"></a><br><strong>3. Full transcript</strong></td>
+    <td width="33%"><a href="examples/sections/01-ai-board.jpg"><img src="examples/sections/01-ai-board.jpg" alt="AI minutes whiteboard"></a><br><strong>AI minutes · board</strong></td>
+    <td width="33%"><a href="examples/sections/02-ai-notes.jpg"><img src="examples/sections/02-ai-notes.jpg" alt="AI minutes text"></a><br><strong>AI minutes · text</strong></td>
+    <td width="33%"><a href="examples/sections/03-transcript.jpg"><img src="examples/sections/03-transcript.jpg" alt="Full transcript"></a><br><strong>Full transcript</strong></td>
   </tr>
 </table>
 
