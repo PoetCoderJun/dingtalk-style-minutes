@@ -1,0 +1,305 @@
+{
+  "schema_version": 3,
+  "source": {
+    "transcript_path": "tests/fixtures/meeting-transcript.json",
+    "duration_seconds": 180,
+    "language": "zh"
+  },
+  "overview": "会议确定新版帮助中心优先解决新用户首次搜索流失问题：首版聚焦三个入口，下周二上线；设计、开发、埋点和运营各有明确交付，同时为权限接口和旧链接跳转保留降级与回滚方案。",
+  "minutes": {
+    "title": "新版帮助中心上线决策",
+    "subtitle": "用最小范围解决首次搜索流失，并把责任、指标、依赖和回滚条件一起锁定",
+    "content_type": "meeting",
+    "sections": [
+      {
+        "id": "problem",
+        "title": "为什么现在必须改",
+        "kind": "metrics",
+        "tone": "red",
+        "items": [
+          {
+            "label": "首次搜索离开率",
+            "value": "32%",
+            "note": "主要发生在账号连接与权限设置。",
+            "source_segment_ids": [
+              "seg-0002"
+            ]
+          },
+          {
+            "label": "上线后一周目标",
+            "value": "降至 20%",
+            "note": "用入口曝光、点击、搜索成功和离开验证。",
+            "source_segment_ids": [
+              "seg-0006"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "decisions",
+        "title": "本次已经确定的产品边界",
+        "kind": "cards",
+        "tone": "green",
+        "items": [
+          {
+            "id": "scope",
+            "title": "首版只保留三个入口",
+            "icon": "list",
+            "bullets": [
+              "快速开始",
+              "连接数据",
+              "常见故障"
+            ],
+            "takeaway": "不在这一版重做全部分类",
+            "source_segment_ids": [
+              "seg-0003"
+            ],
+            "emphasis": [
+              "快速开始"
+            ]
+          },
+          {
+            "id": "launch",
+            "title": "下周二 14:00 上线",
+            "icon": "history",
+            "bullets": [
+              "周一先做灰度验证",
+              "权限搜索错误时立即回滚"
+            ],
+            "takeaway": "上线时间与退出条件同时确定",
+            "source_segment_ids": [
+              "seg-0008"
+            ],
+            "emphasis": [
+              "灰度验证",
+              "立即回滚"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "actions",
+        "title": "负责人和交付顺序",
+        "kind": "process",
+        "tone": "purple",
+        "items": [
+          {
+            "title": "设计出原型",
+            "bullets": [
+              "周三前完成桌面端和移动端"
+            ],
+            "takeaway": "设计负责",
+            "source_segment_ids": [
+              "seg-0004"
+            ],
+            "emphasis": [
+              "周三前"
+            ]
+          },
+          {
+            "title": "产品确认",
+            "bullets": [
+              "李明在原型完成当天确认"
+            ],
+            "takeaway": "产品负责",
+            "source_segment_ids": [
+              "seg-0004"
+            ],
+            "emphasis": [
+              "李明"
+            ]
+          },
+          {
+            "title": "开发实现",
+            "bullets": [
+              "预计五个工作日",
+              "等待权限搜索字段"
+            ],
+            "takeaway": "开发负责",
+            "source_segment_ids": [
+              "seg-0005"
+            ],
+            "emphasis": [
+              "五个工作日",
+              "权限搜索字段"
+            ]
+          },
+          {
+            "title": "运营盘点链接",
+            "bullets": [
+              "今天下班前列出外部投放链接"
+            ],
+            "takeaway": "运营负责",
+            "source_segment_ids": [
+              "seg-0007"
+            ],
+            "emphasis": [
+              "今天下班前"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "risks",
+        "title": "仍需处理的依赖与风险",
+        "kind": "key_points",
+        "tone": "orange",
+        "items": [
+          {
+            "id": "api",
+            "title": "权限搜索接口",
+            "bullets": [
+              "后端需要补充字段",
+              "周四未完成则隐藏入口"
+            ],
+            "takeaway": "不让单一依赖拖延整版上线",
+            "source_segment_ids": [
+              "seg-0005"
+            ],
+            "emphasis": [
+              "补充字段",
+              "隐藏入口"
+            ]
+          },
+          {
+            "id": "redirect",
+            "title": "旧链接跳转",
+            "bullets": [
+              "跳转策略仍未决定",
+              "先盘点外部投放范围"
+            ],
+            "takeaway": "先确认影响面再选迁移方案",
+            "source_segment_ids": [
+              "seg-0007"
+            ],
+            "emphasis": [
+              "跳转策略",
+              "外部投放范围"
+            ]
+          }
+        ]
+      }
+    ],
+    "prose_sections": [
+      {
+        "title": "评审先收紧问题范围",
+        "points": [
+          {
+            "claim": "首版只解决新用户找不到入口",
+            "details": [
+              "最近两周首次搜索后直接离开的比例达到 32%，问题集中在账号连接和权限设置，因此没有必要同时重构全部内容分类。"
+            ],
+            "source_segment_ids": [
+              "seg-0001",
+              "seg-0002"
+            ]
+          },
+          {
+            "claim": "首页只保留三个关键入口",
+            "details": [
+              "快速开始、连接数据和常见故障构成首版范围，团队可以直接验证入口是否帮助用户找到答案。"
+            ],
+            "source_segment_ids": [
+              "seg-0002",
+              "seg-0003"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "计划同时明确负责人和依赖",
+        "points": [
+          {
+            "claim": "设计与开发都有确定交付点",
+            "details": [
+              "设计在周三前交付桌面端和移动端原型，由产品负责人李明当天确认；开发预计再用五个工作日完成。"
+            ],
+            "source_segment_ids": [
+              "seg-0004",
+              "seg-0005"
+            ]
+          },
+          {
+            "claim": "后端未就绪时采用局部降级",
+            "details": [
+              "权限搜索依赖新增字段，如果周四仍未准备好，首版隐藏该入口，而不是推迟整个帮助中心上线。"
+            ],
+            "source_segment_ids": [
+              "seg-0005",
+              "seg-0008"
+            ]
+          },
+          {
+            "claim": "旧链接迁移先盘点影响面",
+            "details": [
+              "运营当天下班前统计外部投放中的旧帮助中心链接，在跳转策略确定前先避免不可见断链。"
+            ],
+            "source_segment_ids": [
+              "seg-0007",
+              "seg-0008"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "上线被定义成可验证实验",
+        "points": [
+          {
+            "claim": "一周内把离开率降到 20%",
+            "details": [
+              "除最终离开率外，还要记录入口曝光、点击和搜索成功，才能区分问题来自入口吸引力、内容匹配还是搜索结果。"
+            ],
+            "source_segment_ids": [
+              "seg-0002",
+              "seg-0006"
+            ]
+          },
+          {
+            "claim": "灰度与回滚条件提前写清",
+            "details": [
+              "周一先做灰度验证，周二 14:00 正式上线；权限搜索出现错误时立即回滚。"
+            ],
+            "source_segment_ids": [
+              "seg-0005",
+              "seg-0008"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "title": "问题与首版范围",
+      "start": 0,
+      "end": 65,
+      "summary": "团队用首次搜索流失数据界定问题，并决定首版只保留三个帮助入口。",
+      "segment_ids": [
+        "seg-0001",
+        "seg-0002",
+        "seg-0003"
+      ]
+    },
+    {
+      "title": "交付顺序与技术依赖",
+      "start": 65,
+      "end": 112,
+      "summary": "设计、产品与开发的交付顺序被明确，同时为权限接口设置隐藏入口的降级方案。",
+      "segment_ids": [
+        "seg-0004",
+        "seg-0005"
+      ]
+    },
+    {
+      "title": "指标、未决项和上线条件",
+      "start": 112,
+      "end": 180,
+      "summary": "团队确定埋点和一周目标，保留旧链接跳转未决项，并约定灰度与回滚条件。",
+      "segment_ids": [
+        "seg-0006",
+        "seg-0007",
+        "seg-0008"
+      ]
+    }
+  ]
+}

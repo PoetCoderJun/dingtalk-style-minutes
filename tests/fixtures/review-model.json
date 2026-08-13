@@ -1,0 +1,212 @@
+{
+  "schema_version": 3,
+  "source": {
+    "transcript_path": "tests/fixtures/review-transcript.json",
+    "duration_seconds": 120.0,
+    "language": "zh"
+  },
+  "overview": "这段评测用速度、可追溯性和后续编辑成本三个标准，对比直接生成总结与先建立证据模型的两种纪要方案，并给出按使用场景选择的结论。",
+  "minutes": {
+    "title": "两种录音纪要方案怎么选",
+    "subtitle": "临时自用追求即时输出，发布与协作更需要证据可追溯、结构可维护。",
+    "content_type": "review",
+    "sections": [
+      {
+        "id": "criteria",
+        "title": "判断方案的三个标准",
+        "kind": "cards",
+        "tone": "green",
+        "items": [
+          {
+            "id": "speed",
+            "title": "产出速度",
+            "bullets": [
+              "从录音到可读结果要几步",
+              "是否需要额外建模"
+            ],
+            "takeaway": "看首次使用成本",
+            "source_segment_ids": [
+              "seg-0001",
+              "seg-0002"
+            ],
+            "emphasis": [
+              "可读结果",
+              "额外建模"
+            ]
+          },
+          {
+            "id": "trace",
+            "title": "证据追溯",
+            "bullets": [
+              "结论能否回到具体录音段",
+              "错误能否被逐项定位"
+            ],
+            "takeaway": "看内容可信度",
+            "source_segment_ids": [
+              "seg-0001",
+              "seg-0003",
+              "seg-0005"
+            ],
+            "emphasis": [
+              "具体录音段",
+              "逐项定位"
+            ]
+          },
+          {
+            "id": "edit",
+            "title": "后续编辑",
+            "bullets": [
+              "画板与正文能否独立调整",
+              "改版是否会导致整篇漂移"
+            ],
+            "takeaway": "看长期维护成本",
+            "source_segment_ids": [
+              "seg-0003",
+              "seg-0005"
+            ],
+            "emphasis": [
+              "独立调整",
+              "整篇漂移"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "contrast",
+        "title": "直接总结与证据模型的真实差异",
+        "kind": "comparison",
+        "tone": "purple",
+        "items": [
+          {
+            "id": "direct",
+            "title": "方案 A：直接总结",
+            "bullets": [
+              "一步得到可读文本，上手更快",
+              "来源关系隐含，改版容易漂移"
+            ],
+            "takeaway": "适合临时自用",
+            "source_segment_ids": [
+              "seg-0002",
+              "seg-0003"
+            ],
+            "emphasis": [
+              "一步得到可读文本",
+              "来源关系隐含"
+            ]
+          },
+          {
+            "id": "model",
+            "title": "方案 B：证据模型",
+            "bullets": [
+              "先建来源映射，再分别渲染",
+              "初始多一步，后续核对和维护更稳"
+            ],
+            "takeaway": "适合发布与协作",
+            "source_segment_ids": [
+              "seg-0004",
+              "seg-0005"
+            ],
+            "emphasis": [
+              "来源映射",
+              "核对和维护更稳"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "verdict",
+        "title": "选择取决于内容生命周期",
+        "kind": "synthesis",
+        "tone": "orange",
+        "text": "不是所有录音都需要重流程：一次性自用优先速度，公开发布、多人协作或长期复用时，证据模型带来的可核对性会抵消前期成本。",
+        "source_segment_ids": [
+          "seg-0001",
+          "seg-0002",
+          "seg-0003",
+          "seg-0004",
+          "seg-0005",
+          "seg-0006"
+        ]
+      }
+    ],
+    "prose_sections": [
+      {
+        "title": "分界发生在内容继续流转之后",
+        "points": [
+          {
+            "claim": "首次生成速度不是完整成本",
+            "details": [
+              "直接总结和证据模型都能快速产出通顺文字，但找错、重写和向协作者解释来源的时间会在后续阶段拉开差距。"
+            ],
+            "source_segment_ids": [
+              "seg-0001",
+              "seg-0002",
+              "seg-0003"
+            ]
+          },
+          {
+            "claim": "内容流转会放大来源价值",
+            "details": [
+              "只要结果需要修改、复核或交给别人使用，来源关系就从幕后细节变成质量基础。"
+            ],
+            "source_segment_ids": [
+              "seg-0003",
+              "seg-0005"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "证据模型让两种产物各司其职",
+        "points": [
+          {
+            "claim": "画板压缩结构，正文展开推理",
+            "details": [
+              "方案 B 保留分段转写和来源编号，使画板与正文依据同一批事实，但不必复用相同句式。"
+            ],
+            "source_segment_ids": [
+              "seg-0003",
+              "seg-0004",
+              "seg-0005"
+            ]
+          },
+          {
+            "claim": "前期建模换来后期可维护性",
+            "details": [
+              "多一步建模带来可核对、可局部修改和可持续复用，尤其适合需要公开发布或多人协作的纪要。"
+            ],
+            "source_segment_ids": [
+              "seg-0004",
+              "seg-0005",
+              "seg-0006"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "title": "评测标准与直接总结方案",
+      "start": 0.0,
+      "end": 60.0,
+      "summary": "先定义三项评测标准，再说明直接总结方案的速度优势与追溯弱点。",
+      "segment_ids": [
+        "seg-0001",
+        "seg-0002",
+        "seg-0003"
+      ]
+    },
+    {
+      "title": "证据模型方案与选择结论",
+      "start": 60.0,
+      "end": 120.0,
+      "summary": "介绍证据模型的工作方式，并按临时自用和长期发布两种场景给出选择。",
+      "segment_ids": [
+        "seg-0004",
+        "seg-0005",
+        "seg-0006"
+      ]
+    }
+  ]
+}

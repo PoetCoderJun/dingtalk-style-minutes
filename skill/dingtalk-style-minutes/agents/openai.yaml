@@ -1,0 +1,4 @@
+interface:
+  display_name: "DingTalk-style Minutes"
+  short_description: "把录音变成钉钉闪记风格的飞书图文纪要"
+  default_prompt: "请把这份中文录音、视频或转写整理成钉钉闪记风格的三段式飞书图文纪要。"
