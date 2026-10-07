@@ -22,9 +22,17 @@ This is an independent skill inspired by the information architecture of DingTal
 
 ## Required sub-skills
 
-- **REQUIRED SUB-SKILL:** Use `clean-talking-video` section 2 only for ASR.
+- **REQUIRED SUB-SKILL (DashScope path only):** Use `clean-talking-video` for ASR only. Existing transcripts and local FunASR do not require it.
 - **REQUIRED SUB-SKILL:** Use `beautiful-feishu-whiteboard` for SVG safety and live-board verification.
 - Use `lark-doc` to create or surgically update the final document.
+
+## Data path and compatibility
+
+- DashScope sends a locally generated compressed audio proxy to cloud temporary storage; the original video is not uploaded by that transcriber.
+- Local FunASR skips cloud ASR, but is not a bundled adapter: install and normalize the selected model explicitly. The chosen Agent service may still process the transcript.
+- Feishu delivery uploads the minutes, full transcript and whiteboard, and reads them back for verification. Local transcription is not a fully local delivery. If uploads are disallowed, stop at local artifacts and do not claim Feishu completion.
+- `CLEAN_TALKING_VIDEO_SKILL` / `--clean-talking-skill` must point to the directory containing `scripts/transcribe.py`; install its Python dependencies and FFmpeg / FFprobe in addition to this skill.
+- CLI installation alone does not establish that `lark-doc` and its required `lark-shared` dependencies are available; check them before document operations.
 
 ## Invariant Feishu contract
 
@@ -40,7 +48,7 @@ Do not create a separate chapter-navigation section. Do not omit verbatim transc
 
 1. Create an isolated work directory. For DashScope, load the workspace `.ENV` yourself before ASR when it exists: `set -a; source .ENV; set +a`. Otherwise use an already-set environment variable; never ask the user to paste or print a secret. Install the selected transcription path in a compatible isolated environment when needed.
 2. For audio/video input, use one path:
-   - **DashScope:** run `scripts/transcribe_media.py`. It delegates to `clean-talking-video/scripts/transcribe.py`, uses `qwen-audio-3.0-asr-flash-filetrans`, enables speaker diarization by default, and produces `transcript.json` plus `draft.srt`. Supply `--speaker-count N` only when known; use `--no-diarization` only for a clearly single-speaker recording.
+   - **DashScope:** run `scripts/transcribe_media.py`. It delegates to `clean-talking-video/scripts/transcribe.py`, inherits its model configuration (current public default: `qwen3-asr-flash-filetrans`) and produces `transcript.json` plus `draft.srt`. The wrapper requests diarization by default, but the current public clean-talking-video CLI does not accept `--diarization` / `--speaker-count` or emit speaker IDs. With that dependency, use `--no-diarization` only for a clearly single-speaker recording. For multiple speakers, stop and use a reliably diarized existing transcript or a suitable local FunASR model; do not invent speaker labels. Only use the wrapper's diarization flags with a separately verified compatible transcriber.
    - **Local FunASR:** let Codex install and run FunASR locally, preserving segment timestamps and diarization when the selected model supports them. Convert the output to the `transcript.json` fields defined above and validate that segment order and duration are plausible before continuing.
    For an existing transcript, start at step 3.
 3. Read the complete `transcript.json`. Preserve every `speaker_id`. Map anonymous speakers to real names only when self-introduction, participant metadata, or explicit handoff makes the identity reliable; otherwise retain `发言人 N`. Correct obvious ASR terms and remove failed takes only in a separate cleaned transcript; preserve timestamps and segment IDs. Never summarize from `draft.srt` alone.
